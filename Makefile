@@ -4,15 +4,12 @@ SRC_DIR = ./src
 
 CMD_DIR = ./src/commands
 
-UTILS_DIR = ./src/utils
-
-SRC_MAIN = $(SRC_DIR)/push_swap.c $(SRC_DIR)/select_swap.c
-
-SRC_UTILS = $(UTILS_DIR)/fill_stack.c $(UTILS_DIR)/algorithm_utils.c
+SRC_MAIN = $(SRC_DIR)/push_swap.c $(SRC_DIR)/algorithms.c $(SRC_DIR)/fill_stack.c \
+ 			$(SRC_DIR)/ft_push_b.c $(SRC_DIR)/ft_push_a.c $(SRC_DIR)/ft_push_a_utils.c
 
 SRC_COMMANDS = $(CMD_DIR)/swap.c $(CMD_DIR)/push.c $(CMD_DIR)/rotate.c $(CMD_DIR)/reverse_rotate.c
 
-SRC = $(SRC_MAIN) $(SRC_UTILS)  $(SRC_COMMANDS)
+SRC = $(SRC_MAIN) $(SRC_COMMANDS)
 
 OBJ = $(SRC:%.c=%.o)
 
@@ -28,14 +25,14 @@ LIB = libft.a
 
 LIB_DIR = ./libft
 
-BINARY = push_swap
+PROGRAM = push_swap
 
 .PHONY : all clean fclean re
 
-all : $(LIB) $(NAME) $(BINARY)
+all : $(LIB) $(NAME) $(PROGRAM)
 
-$(BINARY)	:	$(LIB) $(NAME)
-				$(CC) -o $(BINARY) $(SRC_DIR)/push_swap.c $(NAME)
+$(PROGRAM)	:	$(LIB_DIR)/$(LIB) $(NAME)
+				$(CC) -o $(PROGRAM) $(SRC_DIR)/push_swap.c $(NAME)
 
 $(NAME) : $(OBJ) $(HEADER) $(LIB_DIR)/$(LIB)
 			ar rcs $(NAME) $? $(LIB_DIR)/*.o
@@ -51,7 +48,7 @@ clean :
 		cd $(LIB_DIR) && $(MAKE) clean
 
 fclean : clean
-		$(RM) $(NAME)
+		$(RM) $(NAME) $(PROGRAM)
 		cd $(LIB_DIR) && $(MAKE) fclean
 
 re     : fclean all

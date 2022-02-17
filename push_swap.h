@@ -3,11 +3,6 @@
 
 # include "libft/libft.h"
 
-# include <stdio.h>
-
-#define A_VAL *(int *)(*a)->content
-#define ELEM_VAL *(int *)elem->content
-
 typedef struct s_moves
 {
     int ra;
@@ -24,7 +19,13 @@ typedef struct s_moves
 
 
 //utils functions
-int ft_fill_stack(int argc, char **argv, t_list **a);
+int     ft_fill_stack(int argc, char **argv, t_list **a);
+void    ft_sort_3(t_list **list);
+int     ft_sorting(t_list **a, t_list **b);
+void    ft_push_b(t_list **a, t_list **b, int *min);
+void    ft_push_a(t_list **a, t_list **b, t_moves *moves);
+int     ft_count_move(t_list **a, t_list **b, t_list *elem, t_moves *moves);
+t_list  *ft_select_el(t_list **a, t_list **b, t_moves *moves);
 
 //commands functions
 void    sa(t_list **a);
@@ -39,8 +40,11 @@ void    rra(t_list **a);
 void    rrb(t_list **b);
 void    rrr(t_list **a, t_list **b);
 
-int     ft_check_sort(t_list *list);
-int     ft_push_swap(t_list **a, t_list **b);
+
+
+
+
+
 
 #endif
 

@@ -9,6 +9,7 @@ static void rotate(t_list **list)
     *list = (*list)->next;
     elem->next = NULL;
 }
+
 void    ra(t_list **a)
 {
     rotate(a);

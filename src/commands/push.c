@@ -4,10 +4,9 @@ void    push(t_list **src, t_list **dst)
 {
     t_list  *elem;
 
-    elem = (*src)->next;
-    (*src)->next = (*dst);
-    *dst = *src;
-    *src = elem;
+    elem = *src;
+    *src = (*src)->next;
+    ft_lstadd_front(dst, elem);
 }
 
 void    pa(t_list **a, t_list **b)
