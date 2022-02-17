@@ -73,17 +73,20 @@ int ft_fill_stack(int argc, char **argv, t_list **a)
     int test;
 
     i = 1;
-    s_index = 0;
     test = 0;
     while(i < argc)
     {
+        s_index = 0;
         values = ft_split(argv[i], ' ');
         if (!values)
             return (0);
         if(!ft_get_val(values, a))
             test = 1;
         while (values[s_index])
-            free(values[s_index++]);
+        {
+            free(values[s_index]);
+            s_index++;
+        }
         free(values);
         if (test == 1)
             return (0);

@@ -14,7 +14,7 @@ static int ft_check_sort(t_list *list)
     return (1);
 }
 
-static  int  ft_push_swap(t_list **a, t_list **b)
+static  void    ft_push_swap(t_list **a, t_list **b)
 {
     int size;
 
@@ -23,9 +23,8 @@ static  int  ft_push_swap(t_list **a, t_list **b)
         sa(a);
     else if (size == 3)
         ft_sort_3(a);
-    else if (!ft_sorting(a, b))
-        return (0);
-    return (1);
+    else
+        ft_sorting(a, b);
 }
 
 int main(int argc, char **argv)
@@ -39,8 +38,7 @@ int main(int argc, char **argv)
     {
         if (ft_lstsize(a) > 1)
             if (!(ft_check_sort(a)))
-               if (!ft_push_swap(&a, &b))
-                   return (0);
+               ft_push_swap(&a, &b);
     }
     else
         ft_putstr_fd("Error\n", 1);
